@@ -1,0 +1,40 @@
+Employee SQL - Module 9
+
+-----------------------
+# Below is the DB schema diagram for the Employee SQL DB. It represents the Primary Keys and the join approach to successfully navigate the SQL DB tables for business insights.
+-----------------------
+
+Titles as emp_title
+-
+title_id VARCHAR(5) PK ## -< Employees.emp_title_id
+title VARCHAR(40) ## Target
+
+Employees as employees
+-
+emp_no INT PK 
+emp_title_id FK >- Titles.title_id  VARCHAR(5)
+birth_Date DATE
+first_name VARCHAR(40)
+last_name VARCHAR(50)
+sex VARCHAR(1)
+hire_date DATE
+
+Deparatments as department
+-
+dept_no VARCHAR(4) PK FK >- Dept_manager.dept_no
+dept_name VARCHAR(50) ## Target
+
+Dept_manager as dept_manager
+-
+dept_no VARCHAR(4) FK
+emp_no FK -< employees.emp_no INT
+
+Dept_emp as demp_emp
+- 
+emp_no INT FK >- Employees.emp_no
+dept_no VARCHAR(4) PK FK >- Deparatments.dept_no
+
+Salaries as emp_salary
+-
+emp_no INT FK >- Employees.emp_no
+salary INT ## Target
